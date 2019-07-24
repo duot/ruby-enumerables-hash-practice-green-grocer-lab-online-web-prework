@@ -30,13 +30,15 @@ def apply_coupons(cart, coupons)
     if cart[item]
       #subtract discounted items from NON-discounted items
       #but only if coupon meets minimum amount
-      cart[item][:count] -= coupon[:num] if enough_items_for_coupon?(cart[item][:count], coupon[:num])
+      if enough_items_for_coupon?(cart[item][:count], coupon[:num])
+        cart[item][:count] -= coupon[:num] 
 
-      #add discounted items to cart
-      cart[item_w_coupon] = {count: 0} unless cart[item_w_coupon]
-      cart[item_w_coupon][:clearance] = cart[item][:clearance]
-      cart[item_w_coupon][:count] += coupon[:num] #if enough_items_for_coupon?(cart[item][:count], coupon[:num])
-      cart[item_w_coupon][:price] = price_of_each
+        #add discounted items to cart
+        cart[item_w_coupon] = {count: 0} unless cart[item_w_coupon]
+        cart[item_w_coupon][:clearance] = cart[item][:clearance]
+        # cart[item_w_coupon][:count] += coupon[:num] #if enough_items_for_coupon?(cart[item][:count], coupon[:num])
+        cart[item_w_coupon][:price] = price_of_each
+      end
     end
   end
   return cart
