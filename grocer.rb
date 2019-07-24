@@ -46,7 +46,7 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  all = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
+  p all = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   p all.values.map { |item| item.fetch(:price)}.reduce(:+)
 
 end
