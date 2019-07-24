@@ -60,5 +60,6 @@ def checkout(cart, coupons)
     price *= item.fetch(:count)
   }.reduce(:+)
 
+  # 10% discount if over 100
   total > 100.0 ? total - (total * 0.1) : total
 end
