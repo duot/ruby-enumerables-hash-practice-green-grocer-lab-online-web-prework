@@ -31,7 +31,7 @@ def apply_coupons(cart, coupons)
       #add discounted items to cart
       cart[item_w_coupon] = {count: 0} unless cart[item_w_coupon]
       cart[item_w_coupon][:clearance] = cart[item][:clearance]
-      cart[item_w_coupon][:count] += coupon[:num]
+      cart[item_w_coupon][:count] += coupon[:num] unless
       cart[item_w_coupon][:price] = price_of_each
     end
   end
