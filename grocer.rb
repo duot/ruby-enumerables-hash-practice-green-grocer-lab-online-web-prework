@@ -53,11 +53,12 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  p all = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
-  p all.values.map { |item|
+  all = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
+  total = all.values.map { |item|
     # multiply price by count
     price = item.fetch(:price)
     price *= item.fetch(:count)
   }.reduce(:+)
 
+  total > 100.0 ? total - (total * 0.1) : total
 end
