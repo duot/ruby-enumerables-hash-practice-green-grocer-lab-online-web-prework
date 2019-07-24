@@ -25,6 +25,7 @@ def apply_coupons(cart, coupons)
 
     if cart[item]
       #subtract discounted items from NON-discounted items
+      #but only if coupon meets minimum amount
       cart[item][:count] -= coupon[:num]
 
       #add discounted items to cart
