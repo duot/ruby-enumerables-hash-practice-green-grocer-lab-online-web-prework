@@ -46,5 +46,5 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  cart = cart.reduce(:merge).apply_coupons(cart, coupons).apply_clearance(cart)
+  cart = consolidate_cart(cart).apply_coupons(cart, coupons).apply_clearance(cart)
 end
