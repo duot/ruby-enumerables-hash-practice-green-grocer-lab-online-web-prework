@@ -48,6 +48,7 @@ end
 def checkout(cart, coupons)
   p all = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
   p all.values.map { |item|
+    # multiply price by count
     price = item.fetch(:price)
     price *= item.fetch(:count)
   }.reduce(:+)
