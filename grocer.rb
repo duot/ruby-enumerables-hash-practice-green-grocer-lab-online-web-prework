@@ -47,5 +47,5 @@ end
 
 def checkout(cart, coupons)
   all = apply_clearance(apply_coupons(consolidate_cart(cart), coupons))
-  pp all
+  ppall.values
 end
